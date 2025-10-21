@@ -1,0 +1,186 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMvHva9wG92mXTWEgJfjbfV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/JC-dojote/aula_pratica_python/blob/main/atividade2.0\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 27,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0EpELKwcFBrJ",
+        "outputId": "522e73dc-31b7-41cc-9100-37f08c570eab"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Valor absoluto (if-else):  10\n",
+            "Valor absoluto (ternário):  10\n",
+            "Valor absoluto (for):  55\n",
+            "Valor absoluto (while):  55\n",
+            "Valor absoluto (do-while):  55\n"
+          ]
+        }
+      ],
+      "source": [
+        "#valor absoluto\n",
+        "def abs_if_else(valor):\n",
+        "       if valor < 0:\n",
+        "           return -valor\n",
+        "       else:\n",
+        "           return valor\n",
+        "\n",
+        "#Método usando operador ternário\n",
+        "def abs_ternario(valor):\n",
+        "     return -valor if valor < 0 else valor\n",
+        "\n",
+        "#Método para calcular somatório de 0 com for\n",
+        "def somatorio_for(n):\n",
+        "     soma = 0\n",
+        "     for i in range (n+1):\n",
+        "          soma += i\n",
+        "     return soma\n",
+        "\n",
+        "#Método para calcular somatório de 0 com while\n",
+        "def somatorio_while(n):\n",
+        "     soma = 0\n",
+        "     i = 0\n",
+        "     while i <= n:\n",
+        "          soma += i\n",
+        "          i += 1\n",
+        "     return soma\n",
+        "\n",
+        "#Método para calcular somatório de 0 até n usando do-while\n",
+        "def somatorio_do_while(n):\n",
+        "     soma = 0\n",
+        "     i = 0\n",
+        "     while True:\n",
+        "          soma += i\n",
+        "          i += 1\n",
+        "          if i > n:\n",
+        "               break\n",
+        "     return soma\n",
+        "\n",
+        "#testes\n",
+        "print(\"Valor absoluto (if-else): \", abs_if_else(-10))\n",
+        "print(\"Valor absoluto (ternário): \", abs_ternario(-10))\n",
+        "print(\"Valor absoluto (for): \", somatorio_for(10))\n",
+        "print(\"Valor absoluto (while): \", somatorio_while(10))\n",
+        "print(\"Valor absoluto (do-while): \", somatorio_do_while(10))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "#Passo 1: Definir a classe circulo\n",
+        "class Circulo:\n",
+        "#Passo 2: Criar uma constante estática de PI\n",
+        "    PI = math.pi\n",
+        "\n",
+        "\n",
+        "    #Passo 3: Criar o construtor padrão e os atributos\n",
+        "    def __init__(self, raio=1.0, cor=\"Branco\"):\n",
+        "        \"\"\"\n",
+        "        Construtor padrão. Se nenhum valor for passado, assume raio=1.0 e cor=Branco\n",
+        "        \"\"\"\n",
+        "        self.raio = raio # Atributo raio\n",
+        "        self.cor = cor # Atributo cor\n",
+        "        self.circunference = self.calcCircunferencia() # Calcula a circunferência ao iniciar\n",
+        "        self.area = self.calcArea() # Calcula a área ao iniciar\n",
+        "\n",
+        "    #Passo 4: Criar método non-static to calculate the area\n",
+        "    def calcArea(self):\n",
+        "      return Circulo.PI * (self.raio ** 2)\n",
+        "\n",
+        "    #Passo 5: Criar método non-static to calculate the circumference\n",
+        "    def calcCircunferencia(self):\n",
+        "      return 2 * Circulo.PI * self.raio\n",
+        "\n",
+        "    #Passo 6: Criar métodos estáticos para calcular área e circuferência sem precisar de instância @staticmethod\n",
+        "    def calcAreaEstatico (raio):\n",
+        "      return Circulo.PI * (raio ** 2)\n",
+        "    @staticmethod\n",
+        "    def calcCircunferenciaEstatico(raio):\n",
+        "      return 2 * Circulo.PI * raio\n",
+        "\n",
+        "    #Passo 7: Criar métodos para obter os valores de raio e cor\n",
+        "    def getRaio(self):\n",
+        "      return self.raio\n",
+        "\n",
+        "    def getCor(self):\n",
+        "      return self.cor\n",
+        "\n",
+        "#Passo 8: Criar a função main para testar a classe Circulo\n",
+        "def main():\n",
+        "  # Criando objetos com diferentes construtores\n",
+        "  circulo1 = Circulo()\n",
+        "  circulo2 = Circulo(5)\n",
+        "  circulo3 = Circulo(7, \"Azul\")\n",
+        "\n",
+        "  #Passo 9: Testar métodos de instância\n",
+        "  print(\"Circulo1 - Raio: \", circulo1.getRaio(), \", Cor: \", circulo1.getCor(),\n",
+        "    \"Área: \", circulo1.calcArea(), \", Circunferência: \", circulo1.calcCircunferencia())\n",
+        "  print(\"Circulo2 - Raio: \", circulo2.getRaio(), \", Cor: \", circulo2.getCor(),\n",
+        "    \"Área: \", circulo2.calcArea(), \", Circunferência: \", circulo2.calcCircunferencia())\n",
+        "  print(\"Circulo3 - Raio:\", circulo3.getRaio(), \", Cor: \", circulo3.getCor(),\"Área: \", circulo3.calcArea(), \", Circunferência: \", circulo3.calcCircunferencia())\n",
+        "\n",
+        "    #Passso 10: Testar métodos estáticos\n",
+        "  print(\"Área (método estático, raio=10): \", Circulo.calcAreaEstatico(10))\n",
+        "  print(\"Circuferência (método estático, raio=10):\", Circulo.calcCircunferenciaEstatico(10))\n",
+        "\n",
+        "#Passo 11: Executar a função main se o script for rodado diretamente\n",
+        "if __name__ == \"__main__\":\n",
+        "  main()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IHr0p7UqGMw2",
+        "outputId": "d3799c90-0139-4dbc-c361-1cd8ffd005d1"
+      },
+      "execution_count": 30,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Circulo1 - Raio:  1.0 , Cor:  Branco Área:  3.141592653589793 , Circunferência:  6.283185307179586\n",
+            "Circulo2 - Raio:  5 , Cor:  Branco Área:  78.53981633974483 , Circunferência:  31.41592653589793\n",
+            "Circulo3 - Raio: 7 , Cor:  Azul Área:  153.93804002589985 , Circunferência:  43.982297150257104\n",
+            "Área (método estático, raio=10):  314.1592653589793\n",
+            "Circuferência (método estático, raio=10): 62.83185307179586\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
